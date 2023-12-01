@@ -1,0 +1,23 @@
+The error message "c:\Users\Ashutosh College\Desktop\NMIT SEM 7\HPC LAB\x.c:3:10: fatal error: pthread.h: No such file or directory" indicates that the compiler cannot find the header file `pthread.h`. This header file is required for developing multithreaded applications using the POSIX threads library.
+
+To resolve this issue, you need to ensure that the POSIX threads library is installed on your system and that the compiler can locate the required header files. Here's how to address the error:
+
+1. **Install the POSIX Threads Library:** Depending on your operating system, you may need to install the POSIX threads library or its development package. For example, on Ubuntu or Linux Mint, you can install the library using the command:
+
+```bash
+sudo apt-get install libpthread-dev
+```
+
+2. **Set the Compiler Path:** Once the library is installed, you need to inform the compiler about the location of the header files. This can be done by setting the `C_INCLUDE_PATH` environment variable. For example, if the header files are located in the `/usr/include` directory, you can set the variable using the following command:
+
+```bash
+export C_INCLUDE_PATH=/usr/include
+```
+
+3. **Recompile the Code:** After setting the environment variable, recompile the C code using the `gcc` command:
+
+```bash
+gcc -Wall -g x.c -o x -lpthread
+```
+
+This will compile the code and link it with the POSIX threads library, resolving the error. Once the compilation is successful, you can execute the program using the `./x` command.
